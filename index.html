@@ -27,7 +27,8 @@
   <div id="map"></div>
   <script>
       
-      	var map = L.map('map').setView([48.07824446426184, 12.594004744083936], 14.0);
+      	var map = L.map('map',{
+    zoomControl: false}).setView([48.07824446426184, 12.594004744083936], 14.0);
 	
    
           
@@ -53,7 +54,7 @@ var basemaps = {
 		var radius = e.accuracy / 2;
 
 		var locationMarker = L.marker(e.latlng).addTo(map)
-			.bindPopup('You are within ' + radius + ' meters from this point').openPopup();
+			.bindPopup('Sie sind ' + radius + ' Meter entfernt vom Standpunkt').openPopup();
 
 		var locationCircle = L.circle(e.latlng, radius).addTo(map);
 	}
@@ -66,8 +67,16 @@ var basemaps = {
 	map.on('locationerror', onLocationError);
 
 	map.locate({setView: true, maxZoom: 25});
+    
+
+//disable zoomControl when initializing map (which is topleft by default)
+  
       
-      
+ //add zoom control with your options
+L.control.zoom({
+     position:'bottomright'
+}).addTo(map);
+  
       //L.map('map').setView([48.07824446426184, 12.594004744083936], 14.0);
       
   </script>
