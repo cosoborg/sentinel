@@ -26,6 +26,11 @@
 </head>
 <body>
   <div id="map"></div>
+
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.6.1/mapbox-gl.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.6.0/leaflet.js"></script> 
+<script src="https://rawgit.com/mapbox/mapbox-gl-leaflet/master/leaflet-mapbox-gl.js"></script> 
+    
   <script>
       
       	var map = L.map('map',{
@@ -60,7 +65,13 @@ var basemaps = {
     
          DOP_80:L.tileLayer.wms('https://geoservices.bayern.de/wms/v2/ogc_dop80_oa.cgi?', {
         layers: 'by_dop80c'
-    })
+    }),
+    
+    ADV_Vectorkarten:L.mapboxGL({ 
+        style: 'https://adv-smart.de/styles/public/de_style_colour_light.json', 
+        accessToken: 'no-token' 
+    }),
+    
       };
           
           
